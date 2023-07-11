@@ -16,15 +16,12 @@ $.ajax(RSS_URL, {
         const el = $(this);
 
         const template = `
-          <div>
+          <div class="item">
             <img src="${el.find("media\\:content").attr("url")}" alt="">
-            <h2>
-              <a href="${el
-                .find("link")
-                .text()}" target="_blank" rel="noopener">
-                ${el.find("title").text()}
-              </a>
-            </h2>
+            <h2 class="title">${el.find("title").text()}</h2>
+            <div class="starttime">${el.find("content-rss\\:arrangement-starttime").text()}</div>
+            <div class="location">${el.find("content-rss\\:arrangement-location").text()}</div>
+            <div class="description">${el.find("description").text()}</div>
           </div>
         `;
 
