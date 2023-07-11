@@ -1,3 +1,13 @@
+
+@font-face {
+    font-family: "Esja-regular";
+    src: url("Esja-Regular.woff");
+}
+
+body {
+    font-family: "Esja-Regular";
+}
+
 div.item img {
   max-height: 600px;
 }
