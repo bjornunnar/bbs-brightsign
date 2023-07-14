@@ -7,16 +7,20 @@
 body {
   font-family: "Esja-Regular";
   line-height: 1.5em;
-  margin: 0;
+  margin: 40px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+}
+
+h2.event-title {
   font-size: 36px;
-  margin-left: 20px;
 }
 
 div.description {
   font-size: 24px;
-  margin: 20px;
 }
 
 div.image-container {
@@ -24,15 +28,28 @@ div.image-container {
   height: 600px;
   overflow: hidden;
 }
+div.image-container:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.7);
+}
 
 img.title-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
+img.portrait {
+  width: unset;
+  height: unset;
+  object-fit: contain;
+}
 
 img.icon {
   display: inline;
   margin-right: 10px;
-  margin-left: 20px;
 }
