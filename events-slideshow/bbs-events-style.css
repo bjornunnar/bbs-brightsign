@@ -5,9 +5,22 @@
 }
 
 body {
-    font-family: "Esja-Regular";
+  font-family: "Esja-Regular";
+  line-height: 1.5em;
+}
+h1 {
+  font-size: 24px;
+}
+div.description {
+  font-size: 18px;
+  margin-bottom: 20px;
 }
 
 div.item img {
   max-height: 600px;
+}
+
+img.icon {
+  display: inline;
+  margin-right: 10px;
 }

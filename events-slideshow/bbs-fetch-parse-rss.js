@@ -17,11 +17,11 @@ $.ajax(RSS_URL, {
 
         const template = `
           <div class="item">
+            <h1 class="title">${el.find("title").text()}</h1>
             <img src="${el.find("media\\:content").attr("url")}" alt="">
-            <h2 class="title">${el.find("title").text()}</h2>
-            <div class="starttime">${el.find("content-rss\\:arrangement-starttime").text()}</div>
-            <div class="location">${el.find("content-rss\\:arrangement-location").text()}</div>
             <div class="description">${el.find("description").text()}</div>
+            <div class="starttime"><img class="calendar icon" src="calendar.png">${el.find("content-rss\\:arrangement-starttime").text()}</div>
+            <div class="location"><img class="location icon" src="location.png">${el.find("content-rss\\:arrangement-location").text()}</div>
           </div>
         `;
 
