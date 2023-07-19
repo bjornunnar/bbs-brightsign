@@ -1,0 +1,31 @@
+
+@font-face {
+    font-family: "Esja-regular";
+    src: url("Esja-Regular.woff");
+}
+
+body {
+  font-family: "Esja-Regular";
+  line-height: 1.5em;
+  margin: 40px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+h2.event-title {
+  font-size: 32px;
+}
+
+div.description {
+  font-size: 24px;
+  margin: 20px 0;
+}
+
+img.icon {
+  display: inline;
+  margin-right: 10px;
+}
