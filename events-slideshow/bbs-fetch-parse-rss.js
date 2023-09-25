@@ -1,4 +1,4 @@
-const RSS_URL = `https://borgarbokasafn.is/bbs-simple-event-rss/`;
+const RSS_URL = `https://borgarbokasafn.is/bbs-simple-event-rss`;
 
 const slideShowDiv = $("#slideshow");
 
