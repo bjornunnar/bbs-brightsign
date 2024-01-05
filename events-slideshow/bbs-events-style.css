@@ -48,3 +48,20 @@ img.icon {
   display: inline;
   margin-right: 10px;
 }
+div.time-and-place {
+  display: block;
+}
+div.category {
+  /* TODO : a better place to show this -- or to replace with an icon using the fetch-parse code */
+}
+
+@media (min-aspect-ratio: 1.1/1) {
+  div.starttime,
+  div.location {
+  display: inline-block;
+  }
+  div.location {
+    margin-left: 20px;
+  }
+}
+
