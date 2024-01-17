@@ -1,5 +1,8 @@
-/* displays all upcoming events by default, but can be modified to filter for specific locations using the drupal node id, e.g. /80 for Spöng, /93 for Grófin etc. */
-const RSS_URL = `https://borgarbokasafn.is/bbs-simple-event-rss/79`;
+/* https://borgarbokasafn.is/bbs-simple-event-rss displays all upcoming events by default */
+/* this is set up using drupal views */
+/* adding "-east" will filter for Árbær, Spöngin and Úlfarsárdalur branches /*
+/* this can be further modified for specific locations using the drupal node id, e.g. /80 for Spöng, /93 for Grófin etc. */
+const RSS_URL = `https://borgarbokasafn.is/bbs-simple-event-rss-east`;
 
 const slideShowDiv = $("#slideshow");
 
@@ -48,5 +51,8 @@ $.ajax(RSS_URL, {
           }
         })
       });
+
+      /* now initializing slick slider, only after the document has been loaded with event data */
+      initializeSlickSlider();
   }
 });
