@@ -2,7 +2,7 @@
 /* this is set up using drupal views */
 /* adding "-east" will filter for Árbær, Spöngin and Úlfarsárdalur branches /*
 /* this can be further modified for specific locations using the drupal node id, e.g. /80 for Spöng, /93 for Grófin etc. */
-const RSS_URL = `https://borgarbokasafn.is/bbs-simple-event-rss-east`;
+const RSS_URL = `https://borgarbokasafn.is/bbs-simple-event-rss`;
 
 const slideShowDiv = $("#slideshow");
 
