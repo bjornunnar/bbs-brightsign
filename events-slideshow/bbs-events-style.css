@@ -12,18 +12,24 @@ body {
   background: white;
 }
 h1 {
-  font-size: 42px;
-  margin-bottom: 20px;
+  font-size: 40px;
+  margin-bottom: 10px;
+  padding-top: 40px;
   letter-spacing: 0.02em;
+  text-align: right;
+
 }
 
 h2.event-title {
-  font-size: 32px;
+  font-size: 70px;
+  font-weight: bold;
 }
 
 div.description {
-  font-size: 24px;
+  font-size: 38px;
   margin: 20px 0;
+  line-height: 1.1;
+
 }
 
 div.image-container {
@@ -48,18 +54,26 @@ img.portrait {
 img.icon {
   display: inline;
   margin-right: 10px;
+  height: 30px;
+}
+img.category.icon{
+  height: 24px;
 }
 div.time-and-place {
   display: block;
+  font-size: 40px;
 }
 div.category {
-  /* TODO : a better place to show this -- or to replace with an icon using the fetch-parse code */
+  font-size: 32px;
+  color: #393939;
+  margin-top: 10px;
 }
 
 @media (min-aspect-ratio: 1.1/1) {
   div.starttime,
   div.location {
   display: inline-block;
+  margin-bottom: 10px;
   }
   div.location {
     margin-left: 20px;
