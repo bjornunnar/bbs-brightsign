@@ -23,13 +23,32 @@ h1 {
 h2.event-title {
   font-size: 70px;
   font-weight: bold;
+  line-height: 1.1;
+}
+div.description-and-category {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  justify-content: space-between;
+  margin: 20px 0;
 }
 
 div.description {
   font-size: 38px;
-  margin: 20px 0;
   line-height: 1.1;
+  display: flex;
+}
 
+img.category.icon{
+  height: 24px;
+}
+
+div.category {
+  font-size: 32px;
+  color: #393939;
+  display: flex;
+  flex-wrap: nowrap;
+  margin-left: 50px;
 }
 
 div.image-container {
@@ -56,17 +75,13 @@ img.icon {
   margin-right: 10px;
   height: 30px;
 }
-img.category.icon{
-  height: 24px;
-}
+
 div.time-and-place {
   display: block;
   font-size: 40px;
-}
-div.category {
-  font-size: 32px;
-  color: #393939;
-  margin-top: 10px;
+  border-top: 1px solid lightgrey;
+  width: fit-content;
+  padding-top: 20px;
 }
 
 @media (min-aspect-ratio: 1.1/1) {
