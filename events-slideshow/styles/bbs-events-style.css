@@ -1,59 +1,65 @@
 
 @font-face {
     font-family: "Esja-regular";
-    src: url("Esja-Regular.woff");
+    src: url("../assets/fonts/Esja-Regular.woff");
 }
 
 body {
   font-family: "Esja-Regular";
-  line-height: 1.5em;
   margin: 40px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   background: white;
 }
 h1 {
-  font-size: 40px;
-  margin-bottom: 10px;
+  font-size: 2vw;
   padding-top: 40px;
   letter-spacing: 0.02em;
   text-align: right;
-
+  margin: 0;
+}
+div.content {
+  margin: 40 0;
 }
 
-h2.event-title {
-  font-size: 70px;
+div.event-title {
+  font-size: 4vw;
   font-weight: bold;
   line-height: 1.1;
+  margin-bottom: 40px;
 }
+
 div.description-and-category {
   display: flex;
   flex-direction: row;
   align-items: start;
   justify-content: space-between;
-  margin: 20px 0;
 }
 
 div.description {
-  font-size: 38px;
+  font-size: 2vw;
   line-height: 1.1;
   display: flex;
 }
 
-img.category.icon{
-  height: 24px;
-}
-
-div.category {
-  font-size: 32px;
-  color: #393939;
+div.category.container {
   display: flex;
   flex-wrap: nowrap;
   margin-left: 50px;
+  align-items: center;
+}
+img.category.icon{
+  height: 1vw;
+  display: flex;
+}
+div.category.text{
+  display: flex;
+  font-size: 1.2vw;
+  color: #393939;
 }
 
 div.image-container {
   width: auto;
-  height: 600px;
+  height: 50vh;
   overflow: hidden;
   border: 1px solid black;
 }
@@ -71,26 +77,32 @@ img.portrait {
 }
 
 img.icon {
-  display: inline;
+  display: flex;
+  width: 1vw;
   margin-right: 10px;
-  height: 30px;
 }
 
 div.time-and-place {
-  display: block;
-  font-size: 40px;
+  display: flex;
+  font-size: 1.6vw;
   border-top: 1px solid lightgrey;
   width: fit-content;
   padding-top: 20px;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+div.starttime.container,
+div.location.container {
+  display: flex;
 }
 
+
 @media (min-aspect-ratio: 1.1/1) {
-  div.starttime,
-  div.location {
-  display: inline-block;
-  margin-bottom: 10px;
+  div.time-and-place {
+  flex-direction: row;
   }
-  div.location {
+  div.location.container {
     margin-left: 20px;
   }
 }
