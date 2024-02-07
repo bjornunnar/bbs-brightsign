@@ -12,7 +12,6 @@ body {
 }
 h1 {
   font-size: 2vw;
-  padding-top: 40px;
   letter-spacing: 0.02em;
   text-align: right;
   margin: 0;
@@ -84,11 +83,11 @@ img.icon {
 
 div.time-and-place {
   display: flex;
+  flex-direction: row;
   font-size: 1.6vw;
   border-top: 1px solid lightgrey;
   width: fit-content;
   padding-top: 20px;
-  flex-direction: column;
   flex-wrap: nowrap;
   align-items: center;
 }
@@ -96,14 +95,8 @@ div.starttime.container,
 div.location.container {
   display: flex;
 }
-
-
-@media (min-aspect-ratio: 1.1/1) {
-  div.time-and-place {
-  flex-direction: row;
-  }
-  div.location.container {
-    margin-left: 20px;
-  }
+div.location.container {
+  margin-left: 20px;
 }
+
 
