@@ -9,7 +9,7 @@ let singleMessage = 'Ekkert á döfinni í dag.';
 
 function buildTitleWithDate(pageTitle){
     const currentDate = new Date();
-    const dateOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+    const dateOptions = { month: 'long', day: 'numeric' };
     const dateString = currentDate.toLocaleDateString("is-IS", dateOptions);
     const title = document.createElement("h1");
     title.innerHTML = pageTitle + " " + dateString;
@@ -77,8 +77,8 @@ function createAndInsertRecord(record, recordSpace, insertAtTop) {
 
         listItem.innerHTML = `
             <div class="record title">${Title || 'Ekkert heiti'}</div>
-            <div class="record time">${startTime ? new Date(startTime).toLocaleTimeString([], timeOptions) + ' - ' : ''}${endTime ? new Date(endTime).toLocaleTimeString([], timeOptions) : ''}</div>
             <div class="record location">${Location || ''}</div>
+            <div class="record time">${startTime ? new Date(startTime).toLocaleTimeString([], timeOptions) + ' - ' : ''}${endTime ? new Date(endTime).toLocaleTimeString([], timeOptions) : ''}</div>
             <div class="record note">${Notes || ''}</div>
         `;
         

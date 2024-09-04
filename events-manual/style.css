@@ -22,10 +22,13 @@ h1 {
 }
 
 #agenda li {
+  display: inline-flex;
+  justify-content: space-between;
   background-color: #fff;
   margin: 10px 0;
   padding: 15px;
   border-bottom: 1px solid #ddd;
+  width: 100%
 }
 
 .record {
