@@ -1,14 +1,8 @@
 
-@font-face {
-    font-family: "Esja-regular";
-    src: url("Esja-Regular.woff");
-}
 
 body {
-  font-family: "Esja-Regular";
   line-height: 1.5em;
   margin: 40px;
-  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 }
 h1 {
   font-size: 42px;
@@ -45,9 +39,4 @@ h1 {
 
 .highlight div {
   color: red;
-}
-
-img.icon {
-  display: inline;
-  margin-right: 10px;
 }

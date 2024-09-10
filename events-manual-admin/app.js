@@ -48,7 +48,6 @@ function displayMessage(messageSpace, message) {
 }
 
 function displayRecords(records, recordSpace) {
-    console.log(records);
 
     // Separate records based on the "always on top" category
     const alwaysOnTopRecords = records.filter(record => record.fields.Status === 'always on top');
@@ -63,6 +62,7 @@ function displayRecords(records, recordSpace) {
 
 function createAndInsertRecord(record, recordSpace, insertAtTop) {
 
+        const recordID = record.id;
         const { Title, Location, "Start time": startTime, "End time": endTime, Status, Notes } = record.fields;
         const timeOptions = { hour: "2-digit", minute: "2-digit", hour12: false };
 
@@ -80,7 +80,10 @@ function createAndInsertRecord(record, recordSpace, insertAtTop) {
             <div class="record location">${Location || ''}</div>
             <div class="record time">${startTime ? new Date(startTime).toLocaleTimeString([], timeOptions) + ' - ' : ''}${endTime ? new Date(endTime).toLocaleTimeString([], timeOptions) : ''}</div>
             <div class="record note">${Notes || ''}</div>
+            <button class="delete-button">Delete</button>
         `;
+
+
         
         // Insert the list item at the top or bottom based on the category
     if (insertAtTop) {
@@ -88,6 +91,10 @@ function createAndInsertRecord(record, recordSpace, insertAtTop) {
     } else {
         recordSpace.appendChild(listItem);
     }
+
+        // Add event listener for delete button
+        const deleteButton = listItem.querySelector('.delete-button');
+        deleteButton.addEventListener('click', () => handleDelete(recordID, listItem));
 }
 
 async function buildContent() {
@@ -110,33 +117,65 @@ async function buildContent() {
     
 }
 
+    // Function to get and format current time and current time plus one hour, for time inputs
+    function getCurrentDateTimeForInput() {
+        const now = new Date();
+        const roundedNow = roundMinutes(now);
+        const oneHourLater = new Date(roundedNow.getTime() + 3600000);
+        const formattedNow = now.toISOString().slice(0, 16);
+        const formattedLater = oneHourLater.toISOString().slice(0,16);
+        return [formattedNow , formattedLater];
+    }
+
+    // function to round date value to nearest full hour
+    function roundMinutes(date) {
+        if (date.getMinutes() === 0){
+            return date;
+        }
+        date.setHours(date.getHours() + 1);
+        date.setMinutes(0, 0, 0); // Resets also seconds and milliseconds
+    
+        return date;
+    }
+
+    function setDateInputDefaults(){
+        const startTimeInput = document.getElementById('start-time');
+        const endTimeInput = document.getElementById('end-time');
+        const dateStrings = getCurrentDateTimeForInput();
+        startTimeInput.value = dateStrings[0]; // Set the current date and time
+        endTimeInput.value = dateStrings[1]; // Set that value plus one hour
+    }
+
+    // Set the default value of the start-time and end-time inputs when the form is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        setDateInputDefaults();
+    });
+
 // Function to handle form submission
 async function handleFormSubmit(event) {
     event.preventDefault(); // Prevent default form submission behavior
 
     // Get form values
-    const recordTitle = document.getElementById('recordTitle').ariaValueNow;
+    const recordTitle = document.getElementById('recordTitle').value;
     const location = document.getElementById('location').value;
     const startTime = document.getElementById('start-time').value;
     const endTime = document.getElementById('end-time').value;
     const status = document.getElementById('status').value;
     const notes = document.getElementById('notes').value;
 
-    console.log(recordTitle);
-
     // Validate required fields
-    // if (!title || !location || !startTime) {
-    //     alert('Title, Location, and Start Time are required.');
-    //     return;
-    // }
+     if (!recordTitle) {
+         alert('Title is required.');
+         return;
+     }
 
     // Create the record object to be sent to Airtable
     const newRecord = {
         fields: {
             Title: recordTitle,
-            "Start time": new Date(startTime).toISOString(), // Convert to ISO string format
+            "Start time": startTime ? new Date(startTime).toISOString() : null, // Convert to ISO string format
             "End time": endTime ? new Date(endTime).toISOString() : null,
-            Location: location,
+            Location: location || null,
             Status: status,
             Notes: notes || null
         }
@@ -161,7 +200,10 @@ async function handleFormSubmit(event) {
         const addedRecord = data.records[0];
 
         // Clear the form fields
-        document.getElementById('record-form').reset();
+        resetRecordForm();
+
+        // set the default date values again
+        setDateInputDefaults();
 
         // Display the newly added record without refreshing
         createAndInsertRecord(addedRecord, document.getElementById('agenda'), status === 'always on top');
@@ -170,6 +212,46 @@ async function handleFormSubmit(event) {
         console.error('Error adding record:', error);
         alert('An error occurred while adding the record.');
     }
+}
+
+// Function to handle record deletion
+async function handleDelete(recordId, listItem) {
+    // Confirm the deletion with the user
+    if (!confirm('Are you sure you want to delete this record?')) {
+        return;
+    }
+
+    try {
+        // Send DELETE request to Airtable
+        const response = await fetch(`https://api.airtable.com/v0/${BASE_ID}/${TABLE_NAME}/${recordId}`, {
+            method: 'DELETE',
+            headers: {
+                Authorization: `Bearer ${AIRTABLE_ACCESS_TOKEN}`
+            }
+        });
+
+        if (!response.ok) {
+            throw new Error('Failed to delete record');
+        }
+
+        // Remove the list item from the UI
+        listItem.remove();
+        console.log(`Record with ID ${recordId} deleted successfully`);
+
+    } catch (error) {
+        console.error('Error deleting record:', error);
+        alert('An error occurred while deleting the record.');
+    }
+}
+
+function handleFormReset(event){
+    event.preventDefault();
+    resetRecordForm();
+}
+
+// clear the form fields
+function resetRecordForm(){
+    document.getElementById('record-form').reset();
 }
 
 
@@ -181,6 +263,9 @@ buildContent();
 
 // Add an event listener to the form submit button
 document.getElementById('record-form').addEventListener('submit', handleFormSubmit);
+
+// Add an event listener to the clear form fields button
+document.getElementById('reset-form').addEventListener('submit', handleFormReset);
 
 // rebuild title every hour
 setInterval(buildTitleWithDate(PAGE_TITLE), 6000000);

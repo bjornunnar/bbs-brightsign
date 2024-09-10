@@ -1,3 +1,8 @@
+<!-- 
+ an application that gets a specific table of agenda items from the BBS airtable account,
+ and allows the user to delete or add items, without authentication
+-->
+
 <!DOCTYPE html>
 <html lang="is">
 <html><head>
@@ -24,8 +29,8 @@
     <h2>Add New Record</h2>
     <form id="record-form">
         <input type="text" id="recordTitle" placeholder="Title" required>
-        <input type="text" id="location" placeholder="Location" required>
-        <input type="datetime-local" id="start-time" required>
+        <input type="text" id="location" placeholder="Location">
+        <input type="datetime-local" id="start-time">
         <input type="datetime-local" id="end-time">
         <select id="status">
             <option value="normal">Normal</option>
@@ -34,7 +39,9 @@
         </select>
         <textarea id="notes" placeholder="Notes"></textarea>
         <button type="submit">Add Record</button>
-        <button type="clear">Clear Form</button>
+    </form>
+    <form id="reset-form">
+        <button type="submit">Clear Form</button>
     </form>
 
     <script type="text/javascript" src="app.js"></script>
