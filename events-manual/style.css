@@ -1,0 +1,53 @@
+
+@font-face {
+    font-family: "Esja-regular";
+    src: url("Esja-Regular.woff");
+}
+
+body {
+  font-family: "Esja-Regular";
+  line-height: 1.5em;
+  margin: 40px;
+  text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
+}
+h1 {
+  font-size: 42px;
+  margin-bottom: 20px;
+  letter-spacing: 0.02em;
+}
+
+#agenda {
+  list-style: none;
+  padding: 0;
+}
+
+#agenda li {
+  display: inline-flex;
+  justify-content: space-between;
+  background-color: #fff;
+  margin: 10px 0;
+  padding: 15px;
+  border-bottom: 1px solid #ddd;
+  width: 100%
+}
+
+.record {
+  display: inline;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+.title {
+  font-size: 1.2em;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.highlight div {
+  color: red;
+}
+
+img.icon {
+  display: inline;
+  margin-right: 10px;
+}

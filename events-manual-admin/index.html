@@ -1,0 +1,49 @@
+<!-- 
+ an application that gets a specific table of agenda items from the BBS airtable account,
+ and allows the user to delete or add items, without authentication
+-->
+
+<!DOCTYPE html>
+<html lang="is">
+<html><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBS Manual Events</title>
+
+<link rel="stylesheet" type="text/css" href="style.css"/>
+</head>
+
+<body>
+    <div id="title">
+        <!-- insert title + date -->
+    </div>
+
+    <ul id="agenda">
+        <!-- insert records -->
+    </ul>
+
+    <div id="single-message">
+        <!-- message placeholder -->
+    </div>
+
+    <h2>Add New Record</h2>
+    <form id="record-form">
+        <input type="text" id="recordTitle" placeholder="Title" required>
+        <input type="text" id="location" placeholder="Location">
+        <input type="datetime-local" id="start-time">
+        <input type="datetime-local" id="end-time">
+        <select id="status">
+            <option value="normal">Normal</option>
+            <option value="highlight">Highlight</option>
+            <option value="always on top">Always on Top</option>
+        </select>
+        <textarea id="notes" placeholder="Notes"></textarea>
+        <button type="submit">Add Record</button>
+    </form>
+    <form id="reset-form">
+        <button type="submit">Clear Form</button>
+    </form>
+
+    <script type="text/javascript" src="app.js"></script>
+
+</body></html>
